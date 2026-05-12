@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <title>Localiza Rápido | Rastreamento e Monitoramento de Veículos</title>
+  <meta name="description" content="Rastreador veicular com App completo. Localização em tempo real, bloqueio via celular e alertas inteligentes. Planos a partir de R$39,90.">
+  <meta name="theme-color" content="#0F3B5E">
+  <!-- Font Awesome Icons (v6 free) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- Google Fonts: Poppins & Inter -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #fafcff;
+      color: #1a2c3e;
+      line-height: 1.5;
+      scroll-behavior: smooth;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* header */
+    .header {
+      background: #0F3B5E;
+      color: white;
+      padding: 16px 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .logo-img {
+      background: white;
+      padding: 6px 12px;
+      border-radius: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 20px;
+      color: #0F3B5E;
+      gap: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .logo-img i {
+      font-size: 28px;
+    }
+
+    .logo-img span {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+    }
+
+    .brand-name h1 {
+      font-size: 1.6rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .brand-name p {
+      font-size: 0.85rem;
+      opacity: 0.85;
+      letter-spacing: 0.3px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: 0.2s;
+    }
+
+    .nav-links a:hover {
+      opacity: 0.8;
+    }
+
+    .btn-whatsapp-header {
+      background-color: #25D366;
+      padding: 8px 20px;
+      border-radius: 40px;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: 0.2s;
+    }
+
+    .btn-whatsapp-header:hover {
+      background-color: #128C7E;
+      opacity: 1;
+    }
+
+    /* hero section */
+    .hero {
+      background: linear-gradient(135deg, #EFF6FF 0%, #FFFFFF 100%);
+      padding: 56px 0 64px;
+    }
+
+    .hero-grid {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 40px;
+    }
+
+    .hero-content {
+      flex: 1.2;
+    }
+
+    .hero-badge {
+      background: #DCF2FF;
+      color: #0F3B5E;
+      display: inline-block;
+      padding: 6px 14px;
+      border-radius: 40px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+
+    .hero-content h2 {
+      font-size: 2.8rem;
+      font-weight: 700;
+      line-height: 1.2;
+      color: #0C2D48;
+      margin-bottom: 20px;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .hero-highlight {
+      color: #E67E22;
+    }
+
+    .hero-desc {
+      font-size: 1.1rem;
+      color: #2c5a7a;
+      margin-bottom: 32px;
+      max-width: 550px;
+    }
+
+    .price-tag {
+      background: white;
+      border-radius: 60px;
+      padding: 12px 24px;
+      display: inline-flex;
+      align-items: baseline;
+      gap: 12px;
+      box-shadow: 0 6px 14px rgba(0,0,0,0.05);
+      margin-bottom: 32px;
+    }
+
+    .price-tag .price {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: #0F3B5E;
+    }
+
+    .price-tag .period {
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .btn-primary {
+      background: #E67E22;
+      color: white;
+      border: none;
+      padding: 14px 32px;
+      border-radius: 40px;
+      font-weight: 700;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .btn-primary:hover {
+      background: #cc6d1a;
+      transform: scale(1.02);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 2px solid #0F3B5E;
+      color: #0F3B5E;
+      padding: 12px 28px;
+      border-radius: 40px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-outline:hover {
+      background: #0F3B5E;
+      color: white;
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 32px;
+      margin-top: 40px;
+      flex-wrap: wrap;
+    }
+
+    .stat-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .stat-number {
+      font-weight: 800;
+      font-size: 1.6rem;
+      color: #0F3B5E;
+    }
+
+    /* features */
+    .features {
+      padding: 70px 0;
+      background: white;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 48px;
+      color: #0C2D48;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 32px;
+    }
+
+    .feature-card {
+      background: #F9F9FF;
+      padding: 28px 20px;
+      border-radius: 28px;
+      text-align: center;
+      transition: 0.2s;
+      border: 1px solid #E9EDF2;
+    }
+
+    .feature-card i {
+      font-size: 2.8rem;
+      color: #E67E22;
+      margin-bottom: 20px;
+    }
+
+    .feature-card h3 {
+      font-size: 1.4rem;
+      margin-bottom: 12px;
+    }
+
+    /* how it works */
+    .how-it-works {
+      background: #F2F7FC;
+      padding: 70px 0;
+    }
+
+    .steps {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 32px;
+    }
+
+    .step {
+      background: white;
+      border-radius: 32px;
+      padding: 32px 24px;
+      flex: 1 1 200px;
+      text-align: center;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.04);
+    }
+
+    .step-number {
+      background: #0F3B5E;
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 60px;
+      color: white;
+      font-weight: 800;
+      font-size: 1.4rem;
+      margin: 0 auto 20px;
+    }
+
+    /* plans */
+    .plans {
+      padding: 70px 0;
+    }
+
+    .plans-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 32px;
+      justify-content: center;
+    }
+
+    .plan-card {
+      background: white;
+      border-radius: 32px;
+      flex: 1 1 280px;
+      padding: 32px 24px;
+      box-shadow: 0 12px 28px rgba(0,0,0,0.05);
+      transition: 0.2s;
+      border: 1px solid #E0E8F0;
+    }
+
+    .plan-card.popular {
+      border-top: 5px solid #E67E22;
+      transform: scale(1.02);
+    }
+
+    .plan-price {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #0F3B5E;
+      margin: 16px 0;
+    }
+
+    .plan-features {
+      list-style: none;
+      margin: 24px 0;
+    }
+
+    .plan-features li {
+      margin: 12px 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* control section */
+    .control-section {
+      background: linear-gradient(120deg, #0F3B5E 0%, #1f6392 100%);
+      color: white;
+      padding: 60px 0;
+      text-align: center;
+    }
+
+    .control-section h2 {
+      font-size: 2rem;
+      margin-bottom: 36px;
+    }
+
+    .control-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 40px;
+      margin-top: 20px;
+    }
+
+    .control-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .control-item i {
+      font-size: 2.5rem;
+    }
+
+    /* cta */
+    .cta {
+      background: #FFEAD2;
+      padding: 56px 0;
+      text-align: center;
+    }
+
+    /* footer */
+    .footer {
+      background: #0E2A3B;
+      color: #CFE3F0;
+      padding: 48px 0 24px;
+    }
+
+    .footer a {
+      color: #FFC48A;
+      text-decoration: none;
+    }
+
+    @media (max-width: 768px) {
+      .header-inner {
+        flex-direction: column;
+        text-align: center;
+      }
+      .hero-content h2 {
+        font-size: 2rem;
+      }
+      .nav-links {
+        margin-top: 8px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header class="header">
+  <div class="container header-inner">
+    <div class="logo-area">
+      <div class="logo-img">
+        <i class="fas fa-map-marker-alt"></i>
+        <span>LOCALIZA</span>
+      </div>
+      <div class="brand-name">
+        <h1>Localiza Rápido</h1>
+        <p>Rastreamento e Monitoramento de Veículos</p>
+      </div>
+    </div>
+    <div class="nav-links">
+      <a href="#features">Recursos</a>
+      <a href="#planos">Planos</a>
+      <a href="#contato">Contato</a>
+      <a href="#" class="btn-whatsapp-header"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="hero-content">
+        <div class="hero-badge"><i class="fas fa-shield-alt"></i> + seguro, 24h</div>
+        <h2>Monitore seu veículo <span class="hero-highlight">em tempo real</span> pelo celular</h2>
+        <p class="hero-desc">Rastreamento GPS com bloqueio remoto, alertas antifurto e histórico de rotas. Tenha controle total onde estiver.</p>
+        <div class="price-tag">
+          <span class="price">R$ 39,90</span>
+          <span class="period">/mês + instalação</span>
+        </div>
+        <div class="hero-buttons">
+          <a href="#" class="btn-primary"><i class="fab fa-whatsapp"></i> Falar com especialista</a>
+          <a href="#planos" class="btn-outline"><i class="fas fa-chart-line"></i> Ver planos</a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat-item"><span class="stat-number">100%</span> <span>digital</span></div>
+          <div class="stat-item"><span class="stat-number">24h</span> <span>suporte humano</span></div>
+          <div class="stat-item"><span class="stat-number">4G</span> <span>alta cobertura</span></div>
+        </div>
+      </div>
+      <div style="flex:0.9; text-align:center">
+        <i class="fas fa-gps" style="font-size: 12rem; color:#E67E22; opacity:0.9"></i>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section id="features" class="features">
+    <div class="container">
+      <div class="section-title">Por que escolher a Localiza Rápido?</div>
+      <div class="features-grid">
+        <div class="feature-card"><i class="fas fa-map-marked-alt"></i><h3>Localização real</h3><p>Atualização instantânea no mapa, direto do seu celular.</p></div>
+        <div class="feature-card"><i class="fas fa-lock"></i><h3>Bloqueio remoto</h3><p>Imobilize o veículo a qualquer momento em caso de risco.</p></div>
+        <div class="feature-card"><i class="fas fa-bell"></i><h3>Alertas inteligentes</h3><p>Notificações de ignição, movimentação e cerca eletrônica.</p></div>
+        <div class="feature-card"><i class="fas fa-history"></i><h3>Histórico completo</h3><p>Reveja rotas e paradas dos últimos 90 dias.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section class="how-it-works">
+    <div class="container">
+      <div class="section-title">Como funciona o monitoramento</div>
+      <div class="steps">
+        <div class="step"><div class="step-number">1</div><h3>Contato</h3><p>Você informa o tipo de veículo.</p></div>
+        <div class="step"><div class="step-number">2</div><h3>Indicação</h3><p>A melhor solução para carro, moto ou frota.</p></div>
+        <div class="step"><div class="step-number">3</div><h3>Instalação</h3><p>Técnica especializada ou por conta própria.</p></div>
+        <div class="step"><div class="step-number">4</div><h3>Ativação</h3><p>Rastreador configurado e você já monitora.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Plans -->
+  <section id="planos" class="plans">
+    <div class="container">
+      <div class="section-title">Planos de rastreamento veicular</div>
+      <div class="plans-grid">
+        <div class="plan-card">
+          <h3>Somente Rastreador</h3>
+          <div class="plan-price">R$ 129,90</div>
+          <ul class="plan-features"><li><i class="fas fa-check-circle" style="color:#E67E22"></i> Aparelho GPS</li><li><i class="fas fa-check-circle" style="color:#E67E22"></i> Instalação por conta</li><li><i class="fas fa-check-circle" style="color:#E67E22"></i> App básico</li></ul>
+          <a href="#" class="btn-outline" style="width:100%; text-align:center">Comprar</a>
+        </div>
+        <div class="plan-card popular">
+          <h3>Plano Completo + App <i class="fas fa-crown" style="color:#E67E22"></i></h3>
+          <div class="plan-price">R$ 39,90/mês</div>
+          <ul class="plan-features"><li><i class="fas fa-check-circle" style="color:#E67E22"></i> Monitoramento 4G realtime</li><li><i class="fas fa-check-circle" style="color:#E67E22"></i> Bloqueio via app</li><li><i class="fas fa-check-circle" style="color:#E67E22"></i> Histórico + alertas</li><li><i class="fas fa-check-circle" style="color:#E67E22"></i> Adesão R$199</li></ul>
+          <a href="#" class="btn-primary" style="width:100%; text-align:center">Contratar agora</a>
+        </div>
+        <div class="plan-card">
+          <h3>Frotas & Empresas</h3>
+          <div class="plan-price">Sob consulta</div>
+          <ul class="plan-features"><li><i class="fas fa-check-circle" style="color:#E67E22"></i> Múltiplos veículos</li><li><i class="fas fa-check-circle" style="color:#E67E22"></i> Relatórios gerenciais</li><li><i class="fas fa-check-circle" style="color:#E67E22"></i> Suporte dedicado</li></ul>
+          <a href="#" class="btn-outline" style="width:100%; text-align:center">Falar com consultor</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Full control section -->
+  <section class="control-section">
+    <div class="container">
+      <h2>Controle total na palma da sua mão</h2>
+      <div class="control-grid">
+        <div class="control-item"><i class="fas fa-mobile-alt"></i><span>Monitoramento 24h</span></div>
+        <div class="control-item"><i class="fas fa-car"></i><span>Bloqueio remoto</span></div>
+        <div class="control-item"><i class="fas fa-chart-simple"></i><span>Histórico de rotas</span></div>
+        <div class="control-item"><i class="fas fa-pager"></i><span>Alertas instantâneos</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section id="contato" class="cta">
+    <div class="container">
+      <h2 style="font-size: 1.9rem;">Pronto para proteger seu veículo?</h2>
+      <p style="margin: 16px auto; max-width: 550px;">Fale agora com um especialista e escolha o plano ideal para você.</p>
+      <a href="#" class="btn-primary" style="background:#0F3B5E"><i class="fab fa-whatsapp"></i> Falar no WhatsApp</a>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container" style="text-align: center">
+    <div style="margin-bottom: 24px;">
+      <i class="fas fa-map-marker-alt" style="font-size: 28px;"></i>
+      <span style="font-weight:bold; font-size:1.2rem;"> LOCALIZA RÁPIDO</span>
+      <p style="margin-top: 6px;">Rastreamento e Monitoramento de Veículos</p>
+    </div>
+    <div class="footer-links" style="display:flex; justify-content: center; gap: 28px; margin: 28px 0;">
+      <a href="#"><i class="fab fa-instagram"></i> Instagram</a>
+      <a href="#"><i class="fab fa-facebook"></i> Facebook</a>
+      <a href="#"><i class="fab fa-whatsapp"></i> Suporte 24h</a>
+    </div>
+    <p style="font-size: 0.8rem;">© 2026 Localiza Rápido – Todos os direitos reservados.</p>
+    <p style="font-size: 0.7rem; margin-top: 12px;">Soluções em rastreamento GPS com tecnologia de ponta.</p>
+  </div>
+</footer>
+
+<!-- Simples script para navegação suave e alerta demonstrativo (não muda a identidade do site) -->
+<script>
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const href = this.getAttribute('href');
+      if(href !== "#" && href !== "#contato" && href !== "#planos" && href !== "#features") return;
+      e.preventDefault();
+      const targetId = href === "#" ? null : href.substring(1);
+      if(targetId) {
+        const target = document.getElementById(targetId);
+        if(target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+  // Pequeno placeholder: os botões de whatsapp podem ser ativados depois
+  const botoes = document.querySelectorAll('.btn-primary, .btn-whatsapp-header, .btn-outline');
+  botoes.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      if(btn.classList.contains('btn-outline') && !btn.closest('.plan-card')) return;
+      if(btn.href && btn.href !== "#") return;
+      e.preventDefault();
+      alert("Conecte-se com um consultor pelo WhatsApp: (11) 94792-5115\nAtendimento imediato.");
+    });
+  });
+</script>
+</body>
+</html>
